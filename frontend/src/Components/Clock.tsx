@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import thaiNumbersPhonetic from '../Scripts/thaiNumbersPhonetic';
+import thaiHoursPhonetic from '../Scripts/thaiHoursPhonetic';
 
 export default function Clock() {
     const [time, setTime] = useState(new Date());
@@ -10,15 +12,11 @@ export default function Clock() {
         return () => clearInterval(interval);
     }, []);
 
-    const checkTime = (i: number): string => {
-        return i < 10 ? "0" + i : i.toString();
-    };
-
-    const h = time.getHours();
-    const m = checkTime(time.getMinutes());
-    const s = checkTime(time.getSeconds());
+    const h = thaiHoursPhonetic(time.getHours());
+    const m = thaiNumbersPhonetic(time.getMinutes());
+    const s = thaiNumbersPhonetic(time.getSeconds());
 
     return (
-        <div>{h}:{m}:{s}</div>
+        <h1>{h} {m} naa-tii {s}</h1>
     )
 }
