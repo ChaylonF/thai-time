@@ -17,6 +17,6 @@ export default function Clock() {
     const s = thaiNumbersPhonetic(time.getSeconds());
 
     return (
-        <h1>{h} {m} naa-tii {s}</h1>
+        <h1>{h}<br />{m} naa-tii<br />{s} wí-naa-tii</h1>
     )
 }
