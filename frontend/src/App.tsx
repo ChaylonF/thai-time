@@ -20,7 +20,7 @@ useEffect(() => {
       <div className="flex flex-col h-screen overflow-hidden" >
       <Header />
       <main className="flex-grow flex flex-col items-center justify-center space-y-14 px-4">
-      <Clock script={script} timezone={timezone} theme={theme} />
+      <Clock script={script} timezone={timezone}/>
       <Switches script={script} setScript={setScript} timezone={timezone} setTimezone={setTimezone} theme={theme} setTheme={setTheme} />
       </main>
       <Footer />

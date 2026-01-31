@@ -7,10 +7,9 @@ import thaiNumbers from '../Scripts/thaiNumbers';
 interface ClockProps {
     script: string;
     timezone: string;
-    theme: string;
 }
 
-export default function Clock({ script, timezone, theme }: ClockProps) {
+export default function Clock({ script, timezone}: ClockProps) {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
