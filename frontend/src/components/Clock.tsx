@@ -59,7 +59,7 @@ export default function Clock({ script, timezone}: ClockProps) {
     const timeObj = getTime();
 
     return (
-       <section className="text-center text-3xl sm:text-4xl md:text-5xl leading-tight whites-space-nowrap">
+       <section className="text-center text-4xl sm:text-4xl md:text-5xl leading-tight whites-space-nowrap">
         { script === "phonetic" ? <h1 className='font-inter font-medium'>{timeObj.hours}<br />{timeObj.minutes} naa-tii<br />{timeObj.seconds}</h1> : null }
         { script === "thai" ? <h1 className='font-sarabun font-medium'>{timeObj.hours}<br />{timeObj.minutes} นาที<br />{timeObj.seconds}</h1> : null }
         </section>
