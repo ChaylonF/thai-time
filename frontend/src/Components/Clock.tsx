@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
 import thaiNumbersPhonetic from '../Scripts/thaiNumbersPhonetic';
 import thaiHoursPhonetic from '../Scripts/thaiHoursPhonetic';
+import thaiHours from '../Scripts/thaiHours';
+import thaiNumbers from '../Scripts/thaiNumbers';
 
-export default function Clock() {
+interface ClockProps {
+    script: string;
+    timezone: string;
+    theme: string;
+}
+
+export default function Clock({ script, timezone, theme }: ClockProps) {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -12,11 +20,49 @@ export default function Clock() {
         return () => clearInterval(interval);
     }, []);
 
-    const h = thaiHoursPhonetic(time.getHours());
-    const m = thaiNumbersPhonetic(time.getMinutes());
-    const s = thaiNumbersPhonetic(time.getSeconds());
+    function getTime() {
+        let hours, minutes, seconds;
+
+        if (timezone === 'local') {
+            hours = time.getHours();
+            minutes = time.getMinutes();
+            seconds = time.getSeconds();
+        } else {
+            const bangkokTimeString = time.toLocaleString('en-US', { 
+                timeZone: 'Asia/Bangkok',
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const [h, m, s] = bangkokTimeString.split(':').map(Number);
+            hours = h;
+            minutes = m;
+            seconds = s;
+        }
+
+        if (script === 'phonetic') {
+            return {
+                hours: thaiHoursPhonetic(hours),
+                minutes: thaiNumbersPhonetic(minutes),
+                seconds: thaiNumbersPhonetic(seconds)
+            };
+        } else {
+            return {
+                hours: thaiHours(hours),
+                minutes: thaiNumbers(minutes),
+                seconds: thaiNumbers(seconds)
+            };
+        }
+
+    }
+
+    const timeObj = getTime();
 
     return (
-        <h1>{h}<br />{m} naa-tii<br />{s} wí-naa-tii</h1>
+       <section className="text-center text-5xl leading-tight">
+        { script === "phonetic" ? <h1 className='font-inter font-medium'>{timeObj.hours}<br />{timeObj.minutes} naa-tii<br />{timeObj.seconds} wí-naa-tii</h1> : null }
+        { script === "thai" ? <h1 className='font-sarabun font-medium'>{timeObj.hours}<br />{timeObj.minutes} นาที<br />{timeObj.seconds} วินาที</h1> : null }
+        </section>
     )
 }
