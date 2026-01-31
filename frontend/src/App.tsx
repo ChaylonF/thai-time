@@ -17,7 +17,7 @@ useEffect(() => {
 }, [theme]);
 
   return (
-      <div className="flex flex-col h-screen overflow-hidden" >
+      <div className="flex flex-col h-screen overflow-hidden transition-colors duration-[3000ms]" >
       <Header />
       <main className="flex-grow flex flex-col items-center justify-center space-y-14 px-4">
       <Clock script={script} timezone={timezone}/>

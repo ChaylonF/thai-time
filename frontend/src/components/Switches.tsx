@@ -18,23 +18,23 @@ export default function Switches(props: {
     return (
         <section className="flex flex-col md:flex-row items-center md:space-x-4 justify-center space-y-4 md:space-y-0">
             <Tabs defaultValue={props.script}>
-                <TabsList>
-                    <TabsTrigger value="phonetic" onClick={() => props.setScript('phonetic')}><BsAlphabet /> Phonetic</TabsTrigger>
-                    <TabsTrigger value="thai" onClick={() => props.setScript('thai')}><TbAlphabetThai /> Thai</TabsTrigger>
+                <TabsList className="transition-colors duration-1000 ease-in-out">
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="phonetic" onClick={() => props.setScript('phonetic')}><BsAlphabet /> Phonetic</TabsTrigger>
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="thai" onClick={() => props.setScript('thai')}><TbAlphabetThai /> Thai</TabsTrigger>
                 </TabsList>
             </Tabs>
 
             <Tabs defaultValue={props.timezone}>
-                <TabsList>
-                    <TabsTrigger value="local" onClick={() => props.setTimezone('local')}><FaRegClock /> Local</TabsTrigger>
-                    <TabsTrigger value="bangkok" onClick={() => props.setTimezone('bangkok')}><PiFlowerLotusLight /> Thailand</TabsTrigger>
+                <TabsList className="transition-colors duration-1000 ease-in-out">
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="local" onClick={() => props.setTimezone('local')}><FaRegClock /> Local</TabsTrigger>
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="bangkok" onClick={() => props.setTimezone('bangkok')}><PiFlowerLotusLight /> Thailand</TabsTrigger>
                 </TabsList>
             </Tabs>
 
             <Tabs defaultValue={props.theme}>
-                <TabsList>
-                    <TabsTrigger value="light" onClick={() => props.setTheme('light')}><FaRegSun /> Light</TabsTrigger>
-                    <TabsTrigger value="dark" onClick={() => props.setTheme('dark')}><FaRegMoon /> Dark</TabsTrigger>
+                <TabsList className="transition-colors duration-1000 ease-in-out">
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="light" onClick={() => props.setTheme('light')}><FaRegSun /> Light</TabsTrigger>
+                    <TabsTrigger className="transition-colors duration-1000 ease-in-out" value="dark" onClick={() => props.setTheme('dark')}><FaRegMoon /> Dark</TabsTrigger>
                 </TabsList>
             </Tabs>
         </section>

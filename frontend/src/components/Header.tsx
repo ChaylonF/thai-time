@@ -11,6 +11,7 @@ export default function Header() {
             <Button 
                 onClick={() => window.open("https://github.com/ChaylonF/thai-time", "_blank")}
                 variant="outline"
+                className="transition-colors duration-1000 ease-in-out"
                 >GitHub</Button>
         </header>
     )
